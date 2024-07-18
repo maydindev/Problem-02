@@ -1,4 +1,6 @@
-let count = 0
+import { useState } from "react"
+
+//let count = 0
 
 export default function Discussions() {
   return (
@@ -10,13 +12,18 @@ export default function Discussions() {
 }
 
 function Discussion() {
-  count += 1
+  const [count,setCount] = useState(0)
+  //count += 1
 
+  const handleClick = () => {
+    setCount(prev => prev += 1)
+  }
+  
   return (
     <li className='flex flex-wrap items-center justify-between gap-x-6 gap-y-4 py-5 sm:flex-nowrap'>
       <div>
         <p className='text-sm font-semibold leading-6 text-gray-900'>
-          <a href='#' className='hover:underline'>
+          <a href='#' className='hover:underline' onClick={handleClick}>
             Tartışma konusu {count}
           </a>
         </p>
